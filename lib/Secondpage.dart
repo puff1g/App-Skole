@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:skoleopgave/main.dart';
 
 class SecondPage extends StatelessWidget {
   @override
