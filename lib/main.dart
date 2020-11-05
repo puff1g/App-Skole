@@ -36,6 +36,7 @@ class FirstRoute extends StatelessWidget {
         child: ListView(
           scrollDirection: Axis.vertical,
           children: <Widget>[ /* Main Page Start here! */
+            OpgaveFredag(),
             BmwPiage(),
             AudiPiage(),
             ExtraPiage(),
