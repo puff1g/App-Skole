@@ -9,7 +9,7 @@ class Calculator extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Calculator',
-      theme: ThemeData(primarySwatch: Colors.purple),
+      theme: ThemeData(primarySwatch: Colors.blue),
       home: SimpleCalculator(),
     );
   }
@@ -130,9 +130,9 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
                 child: Table(
                   children: [
                     TableRow(children: [
-                      buildButton("C", 1, Colors.purple),
-                      buildButton("⌫", 1, Colors.purple),
-                      buildButton("÷", 1, Colors.purple),
+                      buildButton("C", 1, Colors.black),
+                      buildButton("⌫", 1, Colors.black),
+                      buildButton("÷", 1, Colors.black),
                     ]),
                     TableRow(children: [
                       buildButton("7", 1, Colors.black54),
@@ -162,16 +162,16 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
                 child: Table(
                   children: [
                     TableRow(children: [
-                      buildButton("×", 1, Colors.purple),
+                      buildButton("×", 1, Colors.black),
                     ]),
                     TableRow(children: [
-                      buildButton("-", 1, Colors.purple),
+                      buildButton("-", 1, Colors.black),
                     ]),
                     TableRow(children: [
-                      buildButton("+", 1, Colors.purple),
+                      buildButton("+", 1, Colors.black),
                     ]),
                     TableRow(children: [
-                      buildButton("=", 2, Colors.purple),
+                      buildButton("=", 2, Colors.black),
                     ]),
                   ],
                 ),

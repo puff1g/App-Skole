@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:skoleopgave/Audi.dart';
-import 'package:skoleopgave/Bmw.dart';
 import 'package:skoleopgave/Calculator/Calculator.dart';
 import 'package:skoleopgave/Secondpage.dart';
 import 'package:get/get.dart';
+import 'package:fab_circular_menu/fab_circular_menu.dart';
+import 'package:skoleopgave/shortcuts.dart';
 
 void main() {
   runApp(GetMaterialApp(
@@ -14,14 +14,14 @@ void main() {
 }
 
 class FirstRoute extends StatelessWidget {
+  final GlobalKey<FabCircularMenuState> fabKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         title: Text('First Route'),
-        actions: [
-        ],
+        actions: [],
       ),
       bottomNavigationBar: BottomAppBar(
         shape: CircularNotchedRectangle(),
@@ -32,277 +32,81 @@ class FirstRoute extends StatelessWidget {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () {
-          Get.to(
-            SecondPage(),
-          );
-        },
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: Container(
         child: ListView(
           scrollDirection: Axis.vertical,
-          children: <Widget>[
-            InkWell(
-              onTap: () => Get.to(BmwPage()),
-              child: Padding(
-                padding: const EdgeInsets.all(30.0),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(5.0),
-                  child: Container(
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Container(
-                                height: 50,
-                                width: 50,
-                                child: Image(
-                                    image: AssetImage('lib/assets/bmw.png'))),
-                            SizedBox(
-                              width: 50,
-                            ),
-                            Text(
-                              "BMW",
-                              style: TextStyle(fontSize: 20),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Flexible(
-                          child: FractionallySizedBox(
-                            widthFactor: 0.6,
-                            child: Text(
-                              "Text here for filler info just to make sure it works",
-                              style: TextStyle(fontSize: 15),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    height: 200.0,
-                    margin: const EdgeInsets.only(bottom: 6.0),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5.0),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey,
-                          offset: Offset(1.0, 1.0), //(x,y)
-                          blurRadius: 6.0,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            InkWell(
-              onTap: () => Get.to(AudiPage()),
-              child: Padding(
-                padding: const EdgeInsets.all(30.0),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(5.0),
-                  child: Container(
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Container(
-                                height: 50,
-                                width: 50,
-                                child: Image(
-                                    image: AssetImage('lib/assets/audi.png'))),
-                            SizedBox(
-                              width: 50,
-                            ),
-                            Text(
-                              "Audi",
-                              style: TextStyle(fontSize: 20),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Flexible(
-                          child: FractionallySizedBox(
-                            widthFactor: 0.6,
-                            child: Text(
-                              "Text here for filler info just to make sure it works",
-                              style: TextStyle(fontSize: 15),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    height: 200.0,
-                    margin: const EdgeInsets.only(bottom: 6.0),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5.0),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey,
-                          offset: Offset(1.0, 1.0), //(x,y)
-                          blurRadius: 6.0,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            InkWell(
-              onTap: () => Get.to(BmwPage()),
-              child: Padding(
-                padding: const EdgeInsets.all(30.0),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(5.0),
-                  child: Container(
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Container(
-                                height: 50,
-                                width: 50,
-                                child: Image(
-                                    image: AssetImage('lib/assets/bmw.png'))),
-                            SizedBox(
-                              width: 50,
-                            ),
-                            Text(
-                              "BMW",
-                              style: TextStyle(fontSize: 20),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Flexible(
-                          child: FractionallySizedBox(
-                            widthFactor: 0.6,
-                            child: Text(
-                              "Text here for filler info just to make sure it works",
-                              style: TextStyle(fontSize: 15),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    height: 200.0,
-                    margin: const EdgeInsets.only(bottom: 6.0),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5.0),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey,
-                          offset: Offset(1.0, 1.0), //(x,y)
-                          blurRadius: 6.0,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            InkWell(
-              onTap: () => Get.to(AudiPage()),
-              child: Padding(
-                padding: const EdgeInsets.all(30.0),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(5.0),
-                  child: Container(
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Container(
-                                height: 50,
-                                width: 50,
-                                child: Image(
-                                    image: AssetImage('lib/assets/audi.png'))),
-                            SizedBox(
-                              width: 50,
-                            ),
-                            Text(
-                              "Audi",
-                              style: TextStyle(fontSize: 20),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Flexible(
-                          child: FractionallySizedBox(
-                            widthFactor: 0.6,
-                            child: Text(
-                              "Text here for filler info just to make sure it works",
-                              style: TextStyle(fontSize: 15),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    height: 200.0,
-                    margin: const EdgeInsets.only(bottom: 6.0),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5.0),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey,
-                          offset: Offset(1.0, 1.0), //(x,y)
-                          blurRadius: 6.0,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
+          children: <Widget>[ /* Main Page Start here! */
+            BmwPiage(),
+            AudiPiage(),
+            ExtraPiage(),
           ],
         ),
       ),
-      /* drawer: Drawer( /* drawer heree  */
-        child: ListView(
-          padding: EdgeInsets.zero,
+      floatingActionButton: Builder(
+        builder: (context) => FabCircularMenu(
+          key: fabKey,
+          // Cannot be `Alignment.center`
+          alignment: Alignment.bottomRight,
+          ringColor: Colors.black.withAlpha(25),
+          ringDiameter: 500.0,
+          ringWidth: 150.0,
+          fabSize: 64.0,
+          fabElevation: 8.0,
+          fabIconBorder: CircleBorder(),
+          fabColor: Colors.white,
+          fabOpenIcon: Icon(Icons.menu, color: Colors.black),
+          fabCloseIcon: Icon(Icons.close, color: Colors.black),
+          fabMargin: const EdgeInsets.all(16.0),
+          animationDuration: const Duration(milliseconds: 800),
+          animationCurve: Curves.easeInOutCirc,
           children: <Widget>[
-            DrawerHeader(
-              child: Text('Me Name is here atm'),
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
+            RawMaterialButton(
+              onPressed: () => Get.to(SecondPage()),
+              shape: CircleBorder(),
+              padding: const EdgeInsets.all(24.0),
+              child: Icon(Icons.panorama, color: Colors.white),
             ),
-            ListTile(
-              title: Text('Test'),
-              onTap: () {
-                Get.to(FirstRoute());
+            RawMaterialButton(
+              onPressed: () => Get.to(Calculator()),
+              shape: CircleBorder(),
+              padding: const EdgeInsets.all(24.0),
+              child: Icon(Icons.calculate, color: Colors.white),
+            ),
+            RawMaterialButton(
+              onPressed: () {
+                Get.defaultDialog(
+                  title: "i am groot",
+                  content: Text('I AM GROOT!'),
+                  onCancel: () => Get.offAll(FirstRoute()),
+                  onConfirm: () => Get.back(),
+                  textConfirm: 'submit',
+                  confirmTextColor: Colors.white,
+                );
               },
+              shape: CircleBorder(),
+              padding: const EdgeInsets.all(24.0),
+              child: Icon(Icons.looks_3, color: Colors.white),
             ),
-            ListTile(
-              title: Text('Calculator'),
-              onTap: () {
-                Get.to(Calculator());
+            RawMaterialButton(
+              onPressed: () {
+                _showSnackBar(
+                    context, "You pressed 4. This one closes the menu on tap");
+                fabKey.currentState.close();
               },
-            ),
-            ListTile(
-              title: Text('TextForm'),
-              onTap: () {
-                Get.to(Calculator());
-              },
-            ),
+              shape: CircleBorder(),
+              padding: const EdgeInsets.all(24.0),
+              child: Icon(Icons.looks_4, color: Colors.white),
+            )
           ],
         ),
-      ), */
+      ),
     );
+  }
+
+  void _showSnackBar(BuildContext context, String message) {
+    Scaffold.of(context).showSnackBar(SnackBar(
+      content: Text(message),
+      duration: const Duration(milliseconds: 1000),
+    ));
   }
 }

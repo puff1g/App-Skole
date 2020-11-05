@@ -30,6 +30,7 @@ dependencies:
   cupertino_icons: ^1.0.0
   get: ^3.15.0
   math_expressions: ^2.0.1
+  fab_circular_menu: ^1.0.0
 
 dev_dependencies:
   flutter_test:
