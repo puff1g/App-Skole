@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'dart:convert';
 
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+import 'package:skoleopgave/Fredagsopgave.dart';
+
 class TextTrans extends StatefulWidget {
   TextTrans({Key key}) : super(key: key);
 
@@ -10,18 +13,77 @@ class TextTrans extends StatefulWidget {
 }
 
 class _TextTransState extends State<TextTrans> {
-  final tings = json.decode(Get.arguments.toString());
+  bool lightTheme = true;
+  Color currentColor = Colors.limeAccent;
+
+  void changeColor(Color color) => setState(() => currentColor = color);
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("DataTransfer"),
-      ),
-      body: Column(
-        children: [
-          Text(tings["ting"].toString(), style: TextStyle(fontSize: 25, color: Colors.black),),
-          Text(tings["ting2"].toString(), style: TextStyle(fontSize: 25, color: Colors.black),),
-        ],
+    return Theme(
+      data: lightTheme ? ThemeData.light() : ThemeData.dark(),
+      child: DefaultTabController(
+        length: 3,
+        child: Scaffold(
+          appBar: AppBar(
+            title: GestureDetector(
+              child: Text('Flutter Color Picker Example'),
+              onDoubleTap: () => setState(() => lightTheme = !lightTheme),
+            ),
+          ),
+          body: Center(
+            child: Column(
+              children: <Widget>[
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    RaisedButton(
+                      elevation: 3.0,
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              titlePadding: const EdgeInsets.all(0.0),
+                              contentPadding: const EdgeInsets.all(0.0),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(25.0),
+                              ),
+                              content: SingleChildScrollView(
+                                child: SlidePicker(
+                                  pickerColor: currentColor,
+                                  onColorChanged: changeColor,
+                                  paletteType: PaletteType.rgb,
+                                  enableAlpha: false,
+                                  displayThumbColor: true,
+                                  showLabel: false,
+                                  showIndicator: true,
+                                  indicatorBorderRadius:
+                                      const BorderRadius.vertical(
+                                    top: const Radius.circular(25.0),
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                        );
+                      },
+                      child: const Text('Change me again'),
+                      color: currentColor,
+                      textColor: useWhiteForeground(currentColor)
+                          ? const Color(0xffffffff)
+                          : const Color(0xff000000),
+                    ),
+                  ],
+                ),
+                RaisedButton(
+                  onPressed: () => Navigator.pop(context, currentColor),
+                  child: Text("Send Color"),
+                )
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }

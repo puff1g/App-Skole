@@ -196,7 +196,7 @@ class OpgaveFredag extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => Get.to(Fredagsopgave()),
+      onTap: () => Get.to(Ffredagsopgave()),
       child: Padding(
         padding: const EdgeInsets.all(30.0),
         child: ClipRRect(
