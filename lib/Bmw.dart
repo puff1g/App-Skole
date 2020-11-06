@@ -1,7 +1,15 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:skoleopgave/Audi.dart';
+import 'package:skoleopgave/Secondpage.dart';
+import 'package:skoleopgave/assets/texttranfer.dart';
 
 class BmwPage extends StatelessWidget {
+    var _controller1 = TextEditingController();
+    var _controller2 = TextEditingController();
+    var _exposed1;
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -28,11 +36,27 @@ class BmwPage extends StatelessWidget {
           Row(
             children: [
               Container(
-                width: size.width / 2,
-                height: 50,
-                color: Colors.blue,
-
-                child: Text("Cookie"),
+                width: size.width,
+                height: 200,
+                color: Colors.white,
+                child: Column(
+                  children: [
+                    TextField(
+                      controller: _controller1,
+                    ),
+                    TextField(
+                      controller: _controller2,
+                    ),
+                    RaisedButton(
+                      onPressed: () => Get.to(TextTrans(),
+                          arguments: jsonEncode({
+                            "ting": _controller1.text,
+                            "ting2": _controller2.text,
+                          })),
+                      child: Text("asdsad"),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
