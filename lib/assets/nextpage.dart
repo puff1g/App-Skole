@@ -1,12 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:flutter_colorpicker/flutter_colorpicker.dart';
-import 'dart:convert';
-import 'package:grouped_buttons/grouped_buttons.dart';
-import 'package:skoleopgave/Fredagsopgave.dart';
-import 'package:skoleopgave/assets/nextpage.dart';
-import 'package:skoleopgave/main.dart';
-
 class NextPage extends StatefulWidget {
   NnextPage createState() => NnextPage();
 }

@@ -33,7 +33,8 @@ dependencies:
   fab_circular_menu: ^1.0.0
   flutter_colorpicker: ^0.3.4
   grouped_buttons: ^1.0.4
-  
+  http: any
+  flutter_slidable: ^0.5.7
 
 dev_dependencies:
   flutter_test:

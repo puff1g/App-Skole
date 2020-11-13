@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'dart:convert';
-import 'package:grouped_buttons/grouped_buttons.dart';
 import 'package:skoleopgave/assets/nextpage.dart';
 import 'package:skoleopgave/assets/texttranfer.dart';
-import 'package:skoleopgave/main.dart';
 
 class Ffredagsopgave extends StatefulWidget {
   Fredagsopgave createState() => Fredagsopgave();

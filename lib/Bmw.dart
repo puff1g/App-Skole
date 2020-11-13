@@ -2,8 +2,6 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:skoleopgave/Audi.dart';
-import 'package:skoleopgave/Secondpage.dart';
 import 'package:skoleopgave/assets/texttranfer.dart';
 
 class BmwPage extends StatelessWidget {
