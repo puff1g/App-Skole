@@ -7,7 +7,6 @@ import 'package:skoleopgave/assets/texttranfer.dart';
 class BmwPage extends StatelessWidget {
     var _controller1 = TextEditingController();
     var _controller2 = TextEditingController();
-    var _exposed1;
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;

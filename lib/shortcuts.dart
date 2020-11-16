@@ -3,6 +3,7 @@ import 'package:skoleopgave/Audi.dart';
 import 'package:skoleopgave/Bmw.dart';
 import 'package:get/get.dart';
 import 'package:skoleopgave/Fredagsopgave.dart';
+import 'package:skoleopgave/apiconnect.dart';
 import 'package:skoleopgave/listview.dart';
 
 
@@ -10,7 +11,7 @@ class BmwPiage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => Get.to(BmwPage()),
+      onTap: () => Get.to(ApiCon()),
       child: Padding(
         padding: const EdgeInsets.all(30.0),
         child: ClipRRect(
