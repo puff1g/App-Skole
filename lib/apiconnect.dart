@@ -1,23 +1,13 @@
-import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:get/get.dart';
+class ApiCon extends StatefulWidget {
+  ApiCon({Key key}) : super(key: key);
 
-Future<Person> fetchPerson() async {
-  final response =
-      await http.get('http://localhost:8085/JavaApiProjekt/api/person/8');
-
-  if (response.statusCode == 200) {
-    /* 200 = Okay / good to go */
-    print('Works! 🙋');
-    return Person.fromJson(jsonDecode(response.body));
-  } else {
-    throw Exception('Failed to load😥');
-  }
+  @override
+  _ApiConState createState() => _ApiConState();
 }
 
 class Person {
@@ -51,34 +41,53 @@ class Person {
   }
 }
 
-class ApiCon extends StatefulWidget {
-  ApiCon({Key key}) : super(key: key);
-
-  @override
-  _ApiConState createState() => _ApiConState();
-}
-
 class _ApiConState extends State<ApiCon> {
-  Future<Person> futurePerson;
-  @override
-  void initState() {
-    super.initState();
-    futurePerson = fetchPerson();
+  List<Person> list = List();
+  var isLoading = false;
+
+  _fetchData() async {
+    setState(() {
+      isLoading = true;
+    });
+    final response =
+        await http.get("http://192.168.43.59:8085/JavaApiProjekt/api/person/8");
+    if (response.statusCode == 200) {
+      list = (json.decode(response.body) as List)
+          .map((data) => new Person.fromJson(data))
+          .toList();
+      setState(() {
+        isLoading = false;
+      });
+    } else {
+      throw Exception('Failed to load Persons');
+    }
   }
 
+  
+  @override
   Widget build(BuildContext context) {
-    return Container(
-        child: FutureBuilder<Person>(
-      future: futurePerson,
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          return Text(snapshot.data.name);
-        } else if (snapshot.hasError) {
-          return Text('${snapshot.error}');
-        }
-
-        return CircularProgressIndicator();
-      },
-    ));
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("Fetch Data JSON"),
+        ),
+        bottomNavigationBar: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: RaisedButton(
+            child: new Text("Fetch Data"),
+            onPressed: _fetchData,
+          ),
+        ),
+        body: isLoading
+            ? Center(
+                child: CircularProgressIndicator(),
+              )
+            : ListView.builder(
+                itemCount: list.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return ListTile(
+                    contentPadding: EdgeInsets.all(10.0),
+                    title: new Text(list[index].name),
+                  );
+                }));
   }
 }
