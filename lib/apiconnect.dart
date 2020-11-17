@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:get/get.dart';
+import 'package:skoleopgave/Apiperson.dart';
 
 class ApiCon extends StatefulWidget {
   ApiCon({Key key}) : super(key: key);
@@ -85,7 +86,17 @@ class _ApiConState extends State<ApiCon> {
                 itemBuilder: (BuildContext context, int index) {
                   return ListTile(
                     contentPadding: EdgeInsets.all(10.0),
-                    title: new Text(list[index].name),
+                    title:
+                        new Text("[ ${list[index].id} ]   " + list[index].name),
+                    onTap: () => {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                ApiPerson(IuserID: list[index].id)),
+                      ),
+                      print("${list[index].id}")
+                    },
                   );
                 }));
   }
