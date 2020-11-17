@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
+import 'package:get/get.dart';
+
 class ApiCon extends StatefulWidget {
   ApiCon({Key key}) : super(key: key);
 
@@ -50,7 +52,7 @@ class _ApiConState extends State<ApiCon> {
       isLoading = true;
     });
     final response =
-        await http.get("http://192.168.43.59:8085/JavaApiProjekt/api/person/8");
+        await http.get("http://192.168.43.59:8085/JavaApiProjekt/api/person/");
     if (response.statusCode == 200) {
       list = (json.decode(response.body) as List)
           .map((data) => new Person.fromJson(data))
@@ -63,19 +65,16 @@ class _ApiConState extends State<ApiCon> {
     }
   }
 
-  
   @override
+  void initState() {
+    super.initState();
+    this._fetchData();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title: Text("Fetch Data JSON"),
-        ),
-        bottomNavigationBar: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: RaisedButton(
-            child: new Text("Fetch Data"),
-            onPressed: _fetchData,
-          ),
         ),
         body: isLoading
             ? Center(
