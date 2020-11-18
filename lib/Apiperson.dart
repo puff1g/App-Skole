@@ -117,4 +117,3 @@ class _ApiPersonState extends State<ApiPerson> {
   }
 }
 
-_onAlertButtonsPressed(context) {}
