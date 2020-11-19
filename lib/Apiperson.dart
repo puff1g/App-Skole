@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:rflutter_alert/rflutter_alert.dart';
@@ -59,7 +60,8 @@ class _ApiPersonState extends State<ApiPerson> {
               Row(
                 children: [
                   RaisedButton(
-                      child: Text('Custom Animation Alert'),
+                      color: Colors.red,
+                      child: Text('Fjern'),
                       onPressed: () => {
                             Alert(
                               context: context,
@@ -116,4 +118,3 @@ class _ApiPersonState extends State<ApiPerson> {
     );
   }
 }
-
