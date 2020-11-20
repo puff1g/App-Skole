@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:skoleopgave/Audi.dart';
 import 'dart:convert';
 import 'package:skoleopgave/assets/nextpage.dart';
 import 'package:skoleopgave/assets/texttranfer.dart';
@@ -9,6 +10,9 @@ class Ffredagsopgave extends StatefulWidget {
 }
 
 class Fredagsopgave extends State<Ffredagsopgave> {
+  var _text = "";
+  var _textSize = "";
+  Color _color = Colors.white;
   final coloree = json.decode(Get.arguments.toString());
   var _group = "Im dumb...";
   Color thiscolor = Colors.white;
@@ -29,24 +33,98 @@ class Fredagsopgave extends State<Ffredagsopgave> {
             /* Text(colorre["name".toString()]),
             Text(colorre["color".toString()]), */
             Text(
-              "Get Name and color",
+              "Get Name and Size",
             ),
             RaisedButton(
-                child: Text("Get Ones Name"),
+                child: Text("Get Ones Name With size"),
                 onPressed: () => _navigateAndDisplaySelection(context)),
 
             /* Text(
               "$_type : $_name and he is $_color",
             ), */
-            Container(
-              color: thiscolor,
-              child: Text(
-                _group, style: TextStyle(color: Colors.white)
-              ),
+            Column(
+              children: [
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      Container(
+                        constraints:
+                            BoxConstraints(minWidth: 100, maxWidth: 200),
+                        child: Expanded(
+                          child: Text(
+                            'Name:',
+                            style: TextStyle(color: Colors.black),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: Text(
+                          _text,
+                          style: TextStyle(color: Colors.black),
+                        ),
+                      ),
+                    ]),
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      Container(
+                        constraints:
+                            BoxConstraints(minWidth: 100, maxWidth: 200),
+                        child: Expanded(
+                          child: Text(
+                            'Color:',
+                            style: TextStyle(color: Colors.black),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: Text(
+                          _color.toString(),
+                          style: TextStyle(color: Colors.black),
+                        ),
+                      ),
+                    ]),
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      Container(
+                        constraints:
+                            BoxConstraints(minWidth: 100, maxWidth: 200),
+                        child: Expanded(
+                          child: Text(
+                            'FontSize:',
+                            style: TextStyle(color: Colors.black),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: Text(
+                          _textSize,
+                          style: TextStyle(color: Colors.black),
+                        ),
+                      ),
+                    ]),
+              ],
             ),
             RaisedButton(
-              child: Text("Get Ones Color",),
-              onPressed: () => _colorchangee(context),
+              child: Text(
+                "Objekt - Graphics",
+              ),
+              onPressed: () {
+                var json = {
+                  "text": _text,
+                  "size": _textSize,
+                  "color": _color,
+                };
+                Map<String, Object> jsonobj = json;
+
+                print(jsonobj);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => Drag(jsonobj: jsonobj)),
+                );
+              },
             ),
           ],
         ),
@@ -77,7 +155,10 @@ class Fredagsopgave extends State<Ffredagsopgave> {
 
     setState(() {
       if (result != null) {
-        _group = "$result";
+        _text = result['text'];
+        _textSize = result['size'];
+        _color = result['color'];
+        print("$result");
       } else {
         _group = "Here comes the name";
       }

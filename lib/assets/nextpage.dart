@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+
 class NextPage extends StatefulWidget {
   NnextPage createState() => NnextPage();
 }
 
 class NnextPage extends State<NextPage> {
-  var _controllertype;
-  var _controllernavn = TextEditingController();
-  
-
+  var _textController = TextEditingController();
+  var _textSizeController = TextEditingController();
+  Color _colorController;
+  Color thiscolor = Colors.white;
+  void changeColor(Color color) => setState(() => thiscolor = color);
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -21,52 +23,64 @@ class NnextPage extends State<NextPage> {
         width: size.width,
         child: Column(
           children: [
-            ListTile(
-                title: const Text('Miow'),
-                leading: Radio(
-                  value: "Cat",
-                  groupValue: _controllertype,
-                  onChanged: (value) {
-                    setState(() {
-                      print('idk');
-                      _controllertype = value;
-                    });
-                  },
-                ),
-              ),
-              ListTile(
-                title: const Text('Woof'),
-                leading: Radio(
-                  value: "Dog",
-                  groupValue: _controllertype,
-                  onChanged: (value) {
-                    setState(() {
-                      print('karla');
-                      _controllertype = value;
-                    });
-                  },
-                ),
-              ),
-              ListTile(
-                title: const Text('Gone'),
-                leading: Radio(
-                  value: "Dad",
-                  groupValue: _controllertype,
-                  onChanged: (value) {
-                    setState(() {
-                      print('blank');
-                      _controllertype = value;
-                    });
-                  },
-                ),
-              ),
             TextField(
-              controller: _controllernavn,
+              controller: _textController,
+            ),
+            ListTile(
+              title: const Text('Red'),
+              leading: Radio(
+                value: Colors.red,
+                groupValue: _colorController,
+                onChanged: (value) {
+                  setState(() {
+                    print('Red');
+                    _colorController = value;
+                  });
+                },
+              ),
+            ),
+            ListTile(
+              title: const Text('Blue'),
+              leading: Radio(
+                value: Colors.blue,
+                groupValue: _colorController,
+                onChanged: (value) {
+                  setState(() {
+                    print('Blue');
+                    _colorController = value;
+                  });
+                },
+              ),
+            ),
+            ListTile(
+              title: const Text('Green'),
+              leading: Radio(
+                value: Colors.green,
+                groupValue: _colorController,
+                onChanged: (value) {
+                  setState(() {
+                    print('Green');
+                    _colorController = value;
+                  });
+                },
+              ),
+            ),
+            Text("TextSize"),
+            TextField(
+              controller: _textSizeController,
             ),
             RaisedButton(
-              onPressed: () => Navigator.pop(
-                      context, _controllertype + ": " + _controllernavn.text),
-              child: Text("asdsad"),
+              onPressed: () {
+                var json = {
+                  "text": _textController.text,
+                  "size": _textSizeController.text,
+                  "color": _colorController
+                };
+
+                print(json);
+                Navigator.pop(context, json);
+              },
+              child: Text("Send Data"),
             ),
           ],
         ),

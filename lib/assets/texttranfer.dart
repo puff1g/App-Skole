@@ -11,7 +11,7 @@ class TextTrans extends StatefulWidget {
 class _TextTransState extends State<TextTrans> {
   bool lightTheme = true;
   Color currentColor = Colors.limeAccent;
-
+  var _controllernavn = TextEditingController();
   void changeColor(Color color) => setState(() => currentColor = color);
 
   @override
@@ -72,10 +72,12 @@ class _TextTransState extends State<TextTrans> {
                     ),
                   ],
                 ),
+                
                 RaisedButton(
                   onPressed: () => Navigator.pop(context, currentColor),
                   child: Text("Send Color"),
-                )
+                ),
+
               ],
             ),
           ),
